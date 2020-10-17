@@ -55,7 +55,12 @@ public class PlayerInput
 
             if (touch.phase == TouchPhase.Moved)
             {
-                MoveDirection = new Vector3(touch.deltaPosition.x, 0f, touch.deltaPosition.y);
+                Ray ray = _mainCamera.ScreenPointToRay(touch.position);
+                float distance;
+                if (_plane.Raycast(ray, out distance))
+                {
+                    MoveDirection = ray.GetPoint(distance);
+                }
             }
             else if(touch.phase == TouchPhase.Began)
             {
@@ -63,7 +68,7 @@ public class PlayerInput
             }
             else if (touch.phase == TouchPhase.Ended)
             {
-                MoveDirection = Vector3.zero;
+                //MoveDirection = Vector3.zero;
                 OnDrop?.Invoke();
 
             }
