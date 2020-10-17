@@ -35,14 +35,7 @@ public class Player : MonoBehaviour
 
     private void Move(Vector3 direction)
     {
-        //Vector3 velocity = new Vector3(direction.x, _rigidbody.position.y, direction.z);
-        //velocity.Normalize();
-        //_rigidbody.velocity = velocity * _speedModifier;
-        //_rigidbody.MovePosition(velocity);
         Vector3 velocity = new Vector3(direction.x - _rigidbody.position.x, 0, direction.z - _rigidbody.position.z);
         _rigidbody.velocity = velocity * _speedModifier;
-
-
-
     }
 }
